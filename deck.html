@@ -36,7 +36,7 @@
     --accent-dim: rgba(0,112,242,0.14);
     --accent-border: rgba(0,112,242,0.32);
     --text: #f0f0f5;
-    --muted: rgba(240,240,245,0.38);
+    --muted: rgba(240,240,245,0.65);
     --subtle: rgba(240,240,245,0.06);
     --border: rgba(255,255,255,0.08);
   }
@@ -154,7 +154,7 @@
   /* ── Headline ── */
   .hl {
     font-family: '72Brand', sans-serif;
-    font-size: clamp(26px, 3.4vw, 44px);
+    font-size: clamp(28px, 3.6vw, 46px);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: 0;
@@ -167,8 +167,8 @@
     font-family: '72Brand', sans-serif;
     font-weight: 400;
     display: flex; gap: 14px;
-    font-size: 15px; line-height: 1.62;
-    color: rgba(242,242,242,0.65);
+    font-size: 17px; line-height: 1.62;
+    color: rgba(242,242,242,0.88);
   }
   .dot {
     flex-shrink: 0;
@@ -181,10 +181,10 @@
 
   /* ── Divider ── */
   .divider {
-    height: 1px;
-    background: linear-gradient(90deg, #0057CC, #0099CC, transparent);
+    height: 0.5px;
+    background: rgba(255,255,255,0.4);
     margin: 28px 0;
-    width: 120px;
+    width: 100%;
   }
 
   /* ── Nav ── */
@@ -242,12 +242,12 @@
 
   .s1-title {
     font-family: '72Brand', sans-serif;
-    font-size: clamp(48px, 6.8vw, 86px);
+    font-size: clamp(52px, 7.0vw, 96px);
     font-weight: 400;
     line-height: 1.03;
     letter-spacing: 0;
     color: var(--text);
-    max-width: 860px;
+    max-width: 1000px;
     padding-top: 8px;
   }
   /* accent the last word */
@@ -265,8 +265,8 @@
   .s1-authors { display: flex; flex-direction: column; gap: 16px; }
   .s1-author  { display: flex; align-items: center; gap: 10px; }
   .s1-arrow-icon { color: #0070F2; flex-shrink: 0; }
-  .s1-name  { font-family: '72Brand', sans-serif; font-size: 13.5px; font-weight: 600; color: var(--text); }
-  .s1-role  { font-family: '72Brand', sans-serif; font-size: 11.5px; font-weight: 300; color: var(--muted); margin-top: 1px; }
+  .s1-name  { font-family: '72Brand', sans-serif; font-size: 20px; font-weight: 600; color: var(--text); }
+  .s1-role  { font-family: '72Brand', sans-serif; font-size: 16px; font-weight: 300; color: var(--muted); margin-top: 1px; }
 
   .s1-brand {
     display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
@@ -319,8 +319,8 @@
   .slide.active .stat-card:nth-child(1) { opacity:1; transform:translateX(0); transition-delay:0.35s; }
   .slide.active .stat-card:nth-child(2) { opacity:1; transform:translateX(0); transition-delay:0.48s; }
   .slide.active .stat-card:nth-child(3) { opacity:1; transform:translateX(0); transition-delay:0.61s; }
-  .stat-num  { font-family: '72Brand', sans-serif; font-size: 32px; font-weight: 900; color: var(--accent-text); line-height: 1; letter-spacing: -0.03em; }
-  .stat-desc { font-family: '72Brand', sans-serif; font-size: 12px; font-weight: 300; color: var(--muted); margin-top: 5px; line-height: 1.5; }
+  .stat-num  { font-family: '72Brand', sans-serif; font-size: 32px; font-weight: 500; color: var(--accent-text); line-height: 1; letter-spacing: -0.03em; }
+  .stat-desc { font-family: '72Brand', sans-serif; font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 5px; line-height: 1.5; }
 
   /* ═══════════════════════════
      SLIDE 4 — Prototype
@@ -439,13 +439,7 @@
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
   }
   .why-right::before {
-    content: '"';
-    position: absolute; top: -10px; left: 20px;
-    font-size: 120px; line-height: 1;
-    color: var(--accent-text);
-    opacity: 0.2;
-    font-family: Georgia, serif;
-    pointer-events: none;
+    content: none;
   }
   .why-quote {
     font-family: '72Brand', sans-serif;
@@ -504,6 +498,11 @@
     gap: 0;
     padding: 0 !important;
     cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.8s ease !important;
+  }
+  .cat-slide.active {
+    opacity: 1;
   }
 
   .cat-frame-full {
@@ -581,7 +580,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, transparent 0%, #0070F2 30%, #00B0F0 70%, transparent 100%);
+    background: #0070F2;
     opacity: 0;
     transform: scaleX(0.2);
     transform-origin: center;
@@ -638,13 +637,9 @@
 
         <div class="s1-brand">
           <div class="s1-logo-wrap">
+            <img src="SAP.png" style="height:22px;display:block;" alt="SAP"/>
+            <div style="width:1px;height:22px;background:rgba(255,255,255,0.15);"></div>
             <span class="lp">Pixel</span><span class="la">&amp;</span><span class="lt">Pitch</span>
-          </div>
-          <div class="s1-season">Fall 2026</div>
-          <!-- SAP logo -->
-          <div style="margin-top:12px;display:flex;align-items:center;gap:8px;">
-            <img src="SAP.png" style="height:28px;display:block;" alt="SAP"/>
-            <span style="font-family:'72Brand',sans-serif;font-weight:300;font-size:11px;color:var(--muted);">SAP.com</span>
           </div>
         </div>
       </div>
@@ -668,31 +663,29 @@
   <div class="slide" id="s2">
     <div class="glow" style="width:500px;height:400px;background:#0070F2;top:-180px;right:-100px;opacity:0.18;filter:blur(80px);border-radius:55% 45% 65% 35% / 50% 60% 40% 55%;"></div>
     <div class="logo-badge r"><span class="lp">Pixel</span><span class="la">&amp;</span><span class="lt">Pitch</span></div>
-    <div class="content-slide">
-      <div class="label r">Problem Statement</div>
-      <div class="content-grid">
-        <div>
-          <div class="hl r" style="margin-bottom:28px;">
-            The customer experience on SAP.com misses opportunities to create moments of meaningful engagement and delight.
-          </div>
-          <ul class="bullets">
-            <li class="r"><div class="dot"></div><span>Interactions can feel static and impersonal, creating a one-way experience rather than an engaging digital journey.</span></li>
-            <li class="r"><div class="dot"></div><span>The lack of visual feedback and other dynamic cues can make workflows feel less polished and satisfying.</span></li>
-            <li class="r"><div class="dot"></div><span>The result is an experience that feels more perfunctory than memorable, and limits our ability to strengthen user connection, confidence, and overall perception of the brand.</span></li>
-          </ul>
-        </div>
+    <div class="content-slide" style="display:flex;flex-direction:column;justify-content:space-between;height:100%;">
+      <div>
+        <div class="label r">Problem Statement</div>
+        <div class="hl r" style="max-width:55%;margin-top:16px;">The customer experience on SAP.com misses opportunities to create moments of meaningful engagement and delight.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;">
+        <ul class="bullets">
+          <li class="r"><div class="dot"></div><span>Interactions can feel static and impersonal, creating a one-way experience rather than an engaging digital journey.</span></li>
+          <li class="r"><div class="dot"></div><span>The lack of visual feedback and other dynamic cues can make workflows feel less polished and satisfying.</span></li>
+          <li class="r"><div class="dot"></div><span>The result is an experience that feels more perfunctory than memorable, and limits our ability to strengthen user connection, confidence, and overall perception of the brand.</span></li>
+        </ul>
         <div class="stat-block">
           <div class="stat-card">
-            <div class="stat-num">88%</div>
-            <div class="stat-desc">of users are less likely to return after a poor digital experience</div>
+            <div class="stat-num">Simpler</div>
+            <div class="stat-desc">to use</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">0.1s</div>
-            <div class="stat-desc">is all it takes for users to form an opinion about visual polish</div>
+            <div class="stat-num">Easier</div>
+            <div class="stat-desc">to understand</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">↑ 26%</div>
-            <div class="stat-desc">lift in brand perception with intentional motion design</div>
+            <div class="stat-num">Memorable</div>
+            <div class="stat-desc">more likely to be remembered</div>
           </div>
         </div>
       </div>
@@ -700,35 +693,24 @@
     <div class="accent-line"></div>
   </div>
 
-  <!-- ═══════════ CAT 2 — after problem, before solution ═══════════ -->
-  <div class="slide cat-slide" id="cat2" data-cat="true">
-    <div class="cat-frame-full">
-      <img src="https://media.giphy.com/media/o0vwzuFwCGAFO/giphy.gif" alt="cat with glasses" loading="lazy"/>
-    </div>
-    <div class="cat-caption">
-      <p>the SAP.com user, deeply unimpressed</p>
-      <span class="cat-skip">click or press → to continue</span>
-    </div>
-    <div class="cat-progress"></div>
-  </div>
-
   <!-- ═══════════ SLIDE 3 — Solution Statement ═══════════ -->
   <div class="slide" id="s3">
     <div class="glow" style="width:500px;height:400px;background:linear-gradient(135deg,#0070F2,#00B0F0);bottom:-180px;left:-100px;opacity:0.2;filter:blur(80px);border-radius:45% 55% 40% 60% / 60% 45% 55% 40%;"></div>
     <div class="logo-badge r"><span class="lp">Pixel</span><span class="la">&amp;</span><span class="lt">Pitch</span></div>
-    <div class="content-slide">
-      <div class="label r">Solution Statement</div>
-      <div class="content-grid">
+    <div class="content-slide" style="display:flex;flex-direction:column;justify-content:space-between;height:100%;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;">
         <div>
-          <div class="hl r" style="margin-bottom:28px;">
-            Thoughtful micro-animations act as communication tools that make SAP.com feel more engaging, responsive, and…delightful!
-          </div>
-          <ul class="bullets">
-            <li class="r"><div class="dot"></div><span>Immediate visual and audio feedback acknowledges user actions and helps create a smoother, more seamless experience.</span></li>
-            <li class="r"><div class="dot"></div><span>Relevant motion cues can guide attention and behavior without adding complexity.</span></li>
-            <li class="r"><div class="dot"></div><span>Subtle animations reinforce successful interactions and help users navigate through workflows with greater confidence.</span></li>
-          </ul>
+          <div class="label r">Solution Statement</div>
+          <div class="hl r" style="margin-top:16px;">Thoughtful micro-animations act as communication tools that make SAP.com feel more engaging, responsive, and…delightful!</div>
         </div>
+        <img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" alt="cat cooking" style="width:100%;height:220px;object-fit:cover;border-radius:12px;opacity:0.85;align-self:start;"/>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;">
+        <ul class="bullets">
+          <li class="r"><div class="dot"></div><span>Immediate visual and audio feedback acknowledges user actions and helps create a smoother, more seamless experience.</span></li>
+          <li class="r"><div class="dot"></div><span>Relevant motion cues can guide attention and behavior without adding complexity.</span></li>
+          <li class="r"><div class="dot"></div><span>Subtle animations reinforce successful interactions and help users navigate through workflows with greater confidence.</span></li>
+        </ul>
         <div class="stat-block">
           <div class="stat-card">
             <div class="stat-num">Clarity</div>
@@ -780,18 +762,6 @@
     <div class="accent-line"></div>
   </div>
 
-  <!-- ═══════════ CAT 3 — after prototype, before why it matters ═══════════ -->
-  <div class="slide cat-slide" id="cat3" data-cat="true">
-    <div class="cat-frame-full">
-      <img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" alt="cat cooking" loading="lazy"/>
-    </div>
-    <div class="cat-caption">
-      <p>we're cooking</p>
-      <span class="cat-skip">click or press → to continue</span>
-    </div>
-    <div class="cat-progress"></div>
-  </div>
-
   <!-- ═══════════ SLIDE 5 — Why it Matters ═══════════ -->
   <div class="slide" id="s5">
         <div class="glow" style="width:600px;height:400px;background:linear-gradient(135deg,#0070F2,#00B0F0);top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.18;filter:blur(90px);border-radius:50% 60% 40% 70% / 55% 40% 65% 45%;"></div>
@@ -817,18 +787,6 @@
     <div class="accent-line"></div>
   </div>
 
-  <!-- ═══════════ CAT 4 — after why it matters, before thank you ═══════════ -->
-  <div class="slide cat-slide" id="cat4" data-cat="true">
-    <div class="cat-frame-full">
-      <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="cat on laptop" loading="lazy"/>
-    </div>
-    <div class="cat-caption">
-      <p>that's a wrap 🐾</p>
-      <span class="cat-skip">click or press → to continue</span>
-    </div>
-    <div class="cat-progress"></div>
-  </div>
-
   <!-- ═══════════ SLIDE 6 — Thank You ═══════════ -->
   <div class="slide" id="s6">
     <div class="glow glow-c"></div>
@@ -840,7 +798,7 @@
       <!-- SAP logo -->
       <div class="r" style="display:flex;align-items:center;gap:10px;margin-top:8px;">
         <img src="SAP.png" style="height:32px;display:block;" alt="SAP"/>
-        <span style="font-family:'72Brand',sans-serif;font-weight:300;font-size:12px;color:var(--muted);">SAP.com Experience Innovation</span>
+        <span style="font-family:'72Brand',sans-serif;font-weight:300;font-size:12px;color:var(--muted);">SAP.com Pixel & Pitch</span>
       </div>
     </div>
     <div class="accent-line"></div>
